@@ -12,7 +12,7 @@ class PostController extends Controller
         $newPost = $request->user()->posts()->create([
             'body' => $request->get('body')
         ]);
-
+   
         return response()->json($post->with('user')->find($newPost->id));
     }
 }
