@@ -3,9 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             Tweet Form
-        </div>
+        </div> --}}
+        <form-component></form-component>
         <div class="col-md-8">
             Timeline
         </div>
