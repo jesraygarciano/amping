@@ -28,7 +28,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- Vue.component('form-component', require('./components/FormComponent.vue'));
+Vue.component('form-component', require('./components/FormComponent.vue'));
+Vue.component('timeline-component', require('./components/TimelineComponent.vue'))
 
 const app = new Vue({
     el: '#app'

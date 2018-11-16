@@ -21,9 +21,25 @@
 </template>
 <script>
 
+import Event from '../event.js';
     export default {
-        
-        
+     data() {
+        return {
+            body: '',
+            postData: {}
+        }
+    },
+    methods: {
+        saveTweet() {
+            axios.post('/tweet/save', {body: this.body}).then(res => {
+                this.postData = res.data;
+                // console.log(res.data);
+                Event.$emit('added_tweet', this.postData);
+            }).catch(e => {
+                console.log(e);
+            });
+                this.body = '';
+        }
     }
-
+}
 </script>
