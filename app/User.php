@@ -29,15 +29,15 @@ class User extends Authenticatable
     ];
 
     protected $appends = ['profileLink'];
-    
-    public function getRouteKeyName()
-    {
-        return 'name';
-    }
-    
+
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 
     public function getProfileLinkAttribute()
@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function following()
     {
-        return $this->belongsToMany(User::class, followers, user_id, follower_id);
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
     }
 
     public function isNot($user)
@@ -62,14 +62,14 @@ class User extends Authenticatable
 
     public function canFollow($user)
     {
-        if(!$this->isNot($user)){
+        if(!$this->isNot($user)) {
             return false;
         }
 
         return !$this->isFollowing($user);
     }
 
-    public function canUnfollow($user)
+    public function canUnFollow($user)
     {
         return $this->isFollowing($user);
     }
