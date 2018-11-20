@@ -2,7 +2,18 @@
 
 @section('content')
 <div class="container">
-    {{ $user->name }}
+    <div class="row">
+        <div class="col-md-12">
+            <h3> {{ $user->name }} </h3>
+            @if(auth()->user()->isNot($user))
+                @if(auth()->user()->isFollowing($user))
+                <a href="#" class="btn btn-danger">Unfollow</a>
+                @else
+                <a href="{{ route('user.follow', $user) }}" class="btn btn-success">Follow</a>
+                @endif
+            @endif                
+        </div>
+    </div>
 </div>
 
 @endsection
