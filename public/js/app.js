@@ -47674,7 +47674,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -47688,6 +47687,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
+        axios.get('/posts').then(function (resp) {
+            _this.posts = resp.data;
+        });
         __WEBPACK_IMPORTED_MODULE_0__event_js__["a" /* default */].$on('added_tweet', function (post) {
             _this.posts.unshift(post);
         });
@@ -47714,15 +47716,10 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "media-body" }, [
             _c("div", { staticClass: "mt-3" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(post.user.name) +
-                    "\n                    | " +
-                    _vm._s(post.createdDate) +
-                    "\n                "
-                )
-              ])
+              _c("a", { attrs: { href: post.user.profileLink } }, [
+                _vm._v(_vm._s(post.user.name))
+              ]),
+              _vm._v(" | " + _vm._s(post.createdDate) + "\n            ")
             ]),
             _vm._v(" "),
             _c("p", [_vm._v(_vm._s(post.body))])
